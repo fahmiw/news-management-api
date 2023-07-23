@@ -14,8 +14,8 @@ class AuthController extends Controller
     public function login(Request $request) {
         try {
             $request->validate([
-                    "email" => "required|string|email",
-                    "password" => "required|string"
+                "email" => "required|string|email",
+                "password" => "required|string"
             ]);
 
             $credentials = request(["email", "password"]);
@@ -94,9 +94,5 @@ class AuthController extends Controller
                 "message" => $e->getMessage(),
             ], 400);
         }
-    }
-
-    public function user(Request $request) {
-        return response()->json($request->user());
     }
 }

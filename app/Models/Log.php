@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Log extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'activity',
+        'entity_type',
+        'entity_id',
+        'user_id'
+    ];
 }

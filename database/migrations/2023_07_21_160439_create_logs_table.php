@@ -16,7 +16,7 @@ class CreateLogsTable extends Migration
         Schema::create('logs', function (Blueprint $table) {
             $table->id();
             $table->enum('activity', ['created', 'updated', 'deleted']);
-            $table->enum('entiy_type', ['news', 'comment']);
+            $table->enum('entity_type', ['news', 'comment']);
             $table->unsignedBigInteger('entity_id');
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
