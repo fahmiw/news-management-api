@@ -20,7 +20,7 @@ use App\Http\Controllers\CommentController;
 Route::group(["prefix" => "auth"], function () {
     Route::post("login", [AuthController::class, "login"])->name('login');
     Route::post("register", [AuthController::class, "register"]);
-    Route::group(["middleware" => ["auth:api","admin"]], function() {
+    Route::group(["middleware" => ["auth:api"]], function() {
         Route::get("logout", [AuthController::class, "logout"]);
     });
 });
@@ -31,7 +31,7 @@ Route::group(["prefix" => "news"], function () {
             Route::post("create", [CommentController::class, "create"]);
         });
     });
-    
+
     Route::group(["middleware" => ["auth:api"]], function() {
         Route::get("all", [NewsController::class, "getAll"]);
         Route::get("detail/{id}", [NewsController::class, "detail"]);

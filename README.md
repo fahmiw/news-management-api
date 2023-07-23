@@ -1,64 +1,105 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# News Management Application API
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+This guide provides step-by-step instructions on how to clone and set up the Laravel 8 project from the given repository, and configure it to use MySQL as the database.
 
-## About Laravel
+## Prerequisites
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Before getting started, ensure that you have the following installed on your machine:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- PHP (7.4 or higher)
+- Composer
+- MySQL
+- Redis
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Installation
 
-## Learning Laravel
+Follow these steps to clone and set up the News Management Application API:
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+1. Clone the repository:
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+    ```bash
+    git clone https://github.com/fahmiw/news-management-api
+    ```
 
-## Laravel Sponsors
+2. Navigate to the project directory:
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+    ```bash
+    cd news-management-api
+    ```
 
-### Premium Partners
+3. Install project dependencies using Composer:
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+    ```bash
+    composer install
+    ```
 
-## Contributing
+4. Install or Run MySQL database in XAMPP,
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+5. Set Up Redis (if not using Docker)
 
-## Code of Conduct
+    If you're not using Docker, ensure you have Redis installed and running on your machine.
+    If using docker, run this command:
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+    ```
+    docker-compose up -d
+    ```
 
-## Security Vulnerabilities
+6. Set Up the Environment
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+    Create a copy of the .env.example file and name it .env. Configure the database and Redis settings in the .env file.
+
+    ```bash
+    cp .env.example .env
+    ```
+
+7. Update the Laravel database configuration:
+    Open the .env file in your project and update the following lines:
+    ```ini
+    DB_CONNECTION=mysql
+    DB_HOST=127.0.0.1
+    DB_PORT=27017
+    DB_DATABASE=your-database-name
+    DB_USERNAME=
+    DB_PASSWORD=
+
+    QUEUE_CONNECTION=redis
+    REDIS_HOST=127.0.0.1
+    REDIS_PASSWORD=null
+    REDIS_PORT=6379
+    REDIS_CLIENT=predis
+    ```
+8. Generate an application key:
+
+    ```bash
+    php artisan key:generate
+    ```
+9. Generate Access Client OAuth:
+
+    ```bash
+    php artisan passport:install
+    ```
+
+10. Running the Application
+
+    To run the cloned Laravel application with MongoDB, execute the following commands:
+    ```bash
+    php artisan serve
+    ```
+
+    This command will start the development server, and you should see a message like "Laravel development server started: http://localhost:8000".
+
+11. Open your postman and visit http://localhost:8000 to access the News Management Application API.
+
+## API Endpoints
+
+The following API endpoints are available in the project,
+Postman Collection : https://documenter.getpostman.com/view/24919470/2s946mZpzK
+
+## Additional Information
+
+For more detailed instructions and information about Laravel, please refer to the official Laravel documentation: https://laravel.com/docs/8.x
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This project is licensed under the MIT License.
+Feel free to copy and use this updated template, which includes the steps to 

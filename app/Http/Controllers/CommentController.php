@@ -43,7 +43,6 @@ class CommentController extends Controller
             return response()->json([
                 "statusCode" => 200,
                 "message" => "Successfully Created Comment!",
-                // "redis" => $getLastest
             ], 200);
 
         } catch (\Exception $e) {
